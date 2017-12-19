@@ -129,24 +129,47 @@
 
         <!-- Table Body -->
         <tbody>
-
+            {% for value in list_data %}
             <tr>
-                <td>Create pretty table design</td>
-                <td>100%</td>
-                <td>Yes</td>
+                 {% for dateval in list_data[value] %}
+                    <td>{{ dateval }} </td>
+                 {% endfor %}
             </tr><!-- Table Row -->
-
-
+            {% endfor %}
 
         </tbody>
         <!-- Table Body -->
 
     </table>
 
-  {% for key, value in list_data %}
-      <p>{{ key }} </p>
-        <p>{{ value }} </p>
-  {% endfor %}
+
+        <form action="/submit" method="post">
+            <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" name="task" placeholder="Task Descriptions"></input>
+                    </td>
+                    <td>
+                        <input type="text" name="email" placeholder="User Email"></input>
+                    </td>
+                    <td>
+                        <select name="priority">
+                          <option value="low">Low</option>
+                          <option value="medium">Medium</option>
+                          <option value="high">High</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+            <input type="submit" value="Add To Do Item" class="button" action="redirect">
+        </form>
+
+    <form action="/clear" method="post">
+        <input type="submit" value="Clear">
+    </form>
+
 
   </body>
 </html>
